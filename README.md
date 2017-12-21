@@ -8,8 +8,7 @@ Run `make` to compile.
 
 ## Why?
 
-The output of `xset q` is meant for humans, it's hard to parse it in a
-one-liner.
+The output of `xset q` is meant for humans.
 
 ## Examples
 
@@ -33,19 +32,18 @@ on
 
 (May return one of: `on`, `standby`, `suspend`, `off`, `n/a`.)
 
-Parse all the data in a script:
+Parse all the data simultaneously:
 
 ~~~
-$ cat example.sh
-eval `./dpms-status` # yay
-
-echo dpms=$dpms_status
-echo monitor=$dpms_monitor
-echo standby=$dpms_standby
-echo suspend=$dpms_standby
-echo off=$dpms_off
-
-$ ./example.sh
+$ sh <<'E'
+> eval `./dpms-status`
+>
+> echo dpms=$dpms_status
+> echo monitor=$dpms_monitor
+> echo standby=$dpms_standby
+> echo suspend=$dpms_standby
+> echo off=$dpms_off
+> E
 dpms=1
 monitor=on
 standby=600
